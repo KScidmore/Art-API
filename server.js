@@ -4,7 +4,7 @@ const app = express();
 const supa = require('@supabase/supabase-js');
 const supabase = supa.createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
 
-//require('./routes/artists')(app, supabase);
+require('./routes/artists')(app, supabase);
 //require('./routes/counts')(app, supabase);
 require('./routes/eras')(app, supabase);
 require('./routes/galleries')(app, supabase);

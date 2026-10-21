@@ -6,11 +6,12 @@ const handleGalleries = (app, supabase) =>{
         const {data, error} = await supabase
             .from('galleries')
             .select();
-        res.send(data);
-
+        
         if (error) {
-            return res.status(404).json({ error: 'Galleries not found' });
+            return res.status(404).json({ error: error.message });
         }
+        res.send(data);
+
     });
 
     app.get('/api/galleries/:galleryId', async (req, res) => {
@@ -29,17 +30,18 @@ const handleGalleries = (app, supabase) =>{
         res.send(data);
     });
 
-    app.get('/api/galleries/:galleryId', async (req, res) => {
+    app.get('/api/galleries/country/:substring', async (req, res) => {
 
-        const galleryId = req.params.galleryId;
+        const substring = req.params.substring;
 
         const {data, error} = await supabase
             .from('galleries')
             .select()
-            .eq('galleryId', galleryId);
+            .ilike('galleryCountry', `${substring}%`)
+            .order('galleryId', {ascending: true});
 
         if (!data || data.length === 0) {
-            return res.status(404).json({ error: `Gallery with ID:${galleryId} not found` });
+            return res.status(404).json({ error: `No galleries found in a country that starts with: ${substring}` });
         }
 
         res.send(data);
