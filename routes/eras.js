@@ -8,7 +8,7 @@ const handleEras = (app, supabase) =>{
         res.send(data);
 
         if (error) {
-            return res.status(404).json({ error: 'Eras not found' });
+            return res.status(400).json({ error: error.message });
         }
     })
 }

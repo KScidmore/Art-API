@@ -6,8 +6,8 @@ const handleArtists = (app, supabase) =>{
             .from('artists')
             .select();
         
-            if (error) {
-            return res.status(404).json({ error: error.message });
+        if (error) {
+            return res.status(400).json({ error: error.message });
         }
 
         res.send(data);
@@ -22,6 +22,9 @@ const handleArtists = (app, supabase) =>{
             .select()
             .eq('artistId', artistId);
 
+        if (error) {
+            return res.status(400).json({ error: error.message });
+        }
         if (!data || data.length === 0) {
             return res.status(404).json({ error: `Artist with ID:${artistId} not found` });
         }
@@ -39,6 +42,9 @@ const handleArtists = (app, supabase) =>{
             .ilike('lastName', `${substring}%`)
             .order('lastName', {ascending: true});
 
+        if (error) {
+            return res.status(400).json({ error: error.message });
+        }
         if (!data || data.length === 0) {
             return res.status(404).json({ error: `No artist found who's last name starts with: ${substring}` });
         }
@@ -56,6 +62,9 @@ const handleArtists = (app, supabase) =>{
             .ilike('nationality', `${substring}%`)
             .order('nationality', {ascending: true});
 
+        if (error) {
+            return res.status(400).json({ error: error.message });
+        }
         if (!data || data.length === 0) {
             return res.status(404).json({ error: `No artist found from a country that starts with: ${substring}` });
         }

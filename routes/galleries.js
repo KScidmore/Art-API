@@ -8,7 +8,7 @@ const handleGalleries = (app, supabase) =>{
             .select();
         
         if (error) {
-            return res.status(404).json({ error: error.message });
+            return res.status(400).json({ error: error.message });
         }
         res.send(data);
 
@@ -23,6 +23,9 @@ const handleGalleries = (app, supabase) =>{
             .select()
             .eq('galleryId', galleryId);
 
+        if (error) {
+            return res.status(400).json({ error: error.message });
+        }
         if (!data || data.length === 0) {
             return res.status(404).json({ error: `Gallery with ID:${galleryId} not found` });
         }
@@ -40,6 +43,9 @@ const handleGalleries = (app, supabase) =>{
             .ilike('galleryCountry', `${substring}%`)
             .order('galleryId', {ascending: true});
 
+        if (error) {
+            return res.status(400).json({ error: error.message });
+        }
         if (!data || data.length === 0) {
             return res.status(404).json({ error: `No galleries found in a country that starts with: ${substring}` });
         }
