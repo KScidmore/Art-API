@@ -4,10 +4,10 @@
 This project is a database-driven REST API built using **Node.js** and **Express**, integrated with **Supabase** for data retrieval. The API provides endpoints for querying paintings, artists, galleries, genres, eras, and aggregated counts, returning all data in JSON format.
 
 ## Built With
-* **Node.js** - JavaScript runtime environment
-* **Express** - Web framework for Node.js
-* **Supabase** - Cloud-based PostgreSQL database
-* **Render** - Hosting platform
+- **Node.js** - JavaScript runtime environment
+- **Express** - Web framework for Node.js
+- **Supabase** - Cloud-based PostgreSQL database
+- **Render** - Hosting platform
 
 ## Project Files
 | File | Description |
@@ -20,53 +20,85 @@ This project is a database-driven REST API built using **Node.js** and **Express
 | `routes/paintings.js` | Handles complex sorting, filtering, limits, pagination skips, and relational painting queries. |
 | `routes/counts.js` | Handles aggregated counts for genres, artists, and top genres by threshold. |
 
-## API Endpoints & Test Links
-https://art-api-yz85.onrender.com/
+---
+
+## API Endpoints Reference
+
+| HTTP Method | Endpoint Path | Description |
+| :--- | :--- | :--- |
+| `GET` | `/api/eras` | Returns all art history eras. |
+| `GET` | `/api/galleries` | Returns all galleries. |
+| `GET` | `/api/galleries/:id` | Returns a specific gallery by ID. |
+| `GET` | `/api/galleries/country/:substring` | Returns galleries whose country starts with the given substring. |
+| `GET` | `/api/artists` | Returns all artists. |
+| `GET` | `/api/artists/:artistId` | Returns a specific artist by ID. |
+| `GET` | `/api/artists/search/:substring` | Returns artists whose last name starts with the given substring. |
+| `GET` | `/api/artists/country/:substring` | Returns artists whose nationality starts with the given substring. |
+| `GET` | `/api/genres` | Returns all genres with nested era details. |
+| `GET` | `/api/genres/:genreId` | Returns a specific genre with era details by ID. |
+| `GET` | `/api/genres/painting/:paintingId` | Returns all genres associated with a specific painting, sorted by name. |
+| `GET` | `/api/paintings/single/:paintingId` | Returns a single painting by ID with related details. |
+| `GET` | `/api/paintings/sort/:searchParam/limit/:limit` | Returns paintings sorted by `title` or `year` with a record limit. |
+| `GET` | `/api/paintings/sort/:searchParam/limit/:limit/skip/:skip` | Returns sorted and limited paintings with pagination skip offset. |
+| `GET` | `/api/paintings/search/:substring` | Returns paintings matching a title substring. |
+| `GET` | `/api/paintings/years/:start/:end` | Returns paintings created between a start and end year range. |
+| `GET` | `/api/paintings/galleries/:galleryId` | Returns paintings belonging to a specific gallery. |
+| `GET` | `/api/paintings/artist/:artistId` | Returns paintings created by a specific artist. |
+| `GET` | `/api/paintings/genre/:genreId` | Returns paintings associated with a specific genre. |
+| `GET` | `/api/paintings/era/:eraId` | Returns paintings associated with a specific art era. |
+| `GET` | `/api/counts/genres` | Returns genre painting counts sorted from fewest to most. |
+| `GET` | `/api/counts/artists` | Returns artist painting counts sorted from most to fewest. |
+| `GET` | `/api/counts/topgenres/:threshold` | Returns genres with a painting count exceeding the specified threshold. |
+
+---
+
+## Live Test Links
+Base URL: `https://art-api-yz85.onrender.com`
 
 ### Eras & Galleries
-* [Get all eras](https://art-api-yz85.onrender.com/api/eras)
-* [Get all galleries](https://art-api-yz85.onrender.com/api/galleries)
-* [Get gallery by ID (30)](https://art-api-yz85.onrender.com/api/galleries/30)
-* [Error Test: Non-existent gallery](https://art-api-yz85.onrender.com/api/galleries/calgary)
-* [Get galleries by country substring (fra)](https://art-api-yz85.onrender.com/api/galleries/country/fra)
+- [GET /api/eras](https://art-api-yz85.onrender.com/api/eras)
+- [GET /api/galleries](https://art-api-yz85.onrender.com/api/galleries)
+- [GET /api/galleries/30](https://art-api-yz85.onrender.com/api/galleries/30) — Gallery by ID (30)
+- [GET /api/galleries/calgary](https://art-api-yz85.onrender.com/api/galleries/calgary) — Error Test: Non-existent gallery
+- [GET /api/galleries/country/fra](https://art-api-yz85.onrender.com/api/galleries/country/fra) — Galleries by country substring (`fra`)
 
 ### Artists
-* [Get all artists](https://art-api-yz85.onrender.com/api/artists)
-* [Get artist by ID (12)](https://art-api-yz85.onrender.com/api/artists/12)
-* [Error Test: Non-existent artist ID](https://art-api-yz85.onrender.com/api/artists/1223423)
-* [Search artists by last name (ma)](https://art-api-yz85.onrender.com/api/artists/search/ma)
-* [Search artists case-insensitive (mA)](https://art-api-yz85.onrender.com/api/artists/search/mA)
-* [Get artists by country (fra)](https://art-api-yz85.onrender.com/api/artists/country/fra)
+- [GET /api/artists](https://art-api-yz85.onrender.com/api/artists)
+- [GET /api/artists/12](https://art-api-yz85.onrender.com/api/artists/12) — Artist by ID (12)
+- [GET /api/artists/1223423](https://art-api-yz85.onrender.com/api/artists/1223423) — Error Test: Non-existent artist ID
+- [GET /api/artists/search/ma](https://art-api-yz85.onrender.com/api/artists/search/ma) — Search last name (`ma`)
+- [GET /api/artists/search/mA](https://art-api-yz85.onrender.com/api/artists/search/mA) — Search last name case-insensitive (`mA`)
+- [GET /api/artists/country/fra](https://art-api-yz85.onrender.com/api/artists/country/fra) — Artists by country (`fra`)
 
 ### Genres
-* [Get all genres with eras](https://art-api-yz85.onrender.com/api/genres)
-* [Get genre by ID (76)](https://art-api-yz85.onrender.com/api/genres/76)
-* [Get genres for painting (408)](https://art-api-yz85.onrender.com/api/genres/painting/408)
-* [Error Test: Invalid painting ID for genres](https://art-api-yz85.onrender.com/api/genres/painting/jsdfhg)
+- [GET /api/genres](https://art-api-yz85.onrender.com/api/genres) — All genres with eras
+- [GET /api/genres/76](https://art-api-yz85.onrender.com/api/genres/76) — Genre by ID (76)
+- [GET /api/genres/painting/408](https://art-api-yz85.onrender.com/api/genres/painting/408) — Genres for painting (408)
+- [GET /api/genres/painting/jsdfhg](https://art-api-yz85.onrender.com/api/genres/painting/jsdfhg) — Error Test: Invalid painting ID
 
 ### Paintings
-* [Get single painting (63)](https://art-api-yz85.onrender.com/api/paintings/single/63)
-* [Sort paintings by title with limit 10](https://art-api-yz85.onrender.com/api/paintings/sort/title/limit/10)
-* [Sort paintings by year with limit 10](https://art-api-yz85.onrender.com/api/paintings/sort/year/limit/10)
-* [Error Test: Invalid sort parameter](https://art-api-yz85.onrender.com/api/paintings/sort/absd/limit/10)
-* [Error Test: Invalid limit parameter](https://art-api-yz85.onrender.com/api/paintings/sort/year/limit/asd)
-* [Error Test: Missing limit parameter](https://art-api-yz85.onrender.com/api/paintings/sort/year/limit)
-* [Sort by year, limit 10, skip 30](https://art-api-yz85.onrender.com/api/paintings/sort/year/limit/10/skip/30)
-* [Error Test: Skip out of bounds](https://art-api-yz85.onrender.com/api/paintings/sort/year/limit/10/skip/30000)
-* [Error Test: Missing skip value](https://art-api-yz85.onrender.com/api/paintings/sort/year/limit/10/skip)
-* [Search paintings by title substring (port)](https://art-api-yz85.onrender.com/api/paintings/search/port)
-* [Search paintings case-insensitive (pORt)](https://art-api-yz85.onrender.com/api/paintings/search/pORt)
-* [Error Test: Search not found](https://art-api-yz85.onrender.com/api/paintings/search/connolly)
-* [Get paintings between years 1800-1850](https://art-api-yz85.onrender.com/api/paintings/years/1800/1850)
-* [Error Test: Start year after end year](https://art-api-yz85.onrender.com/api/paintings/years/1850/1800)
-* [Get paintings by gallery (5)](https://art-api-yz85.onrender.com/api/paintings/galleries/5)
-* [Get paintings by artist (16)](https://art-api-yz85.onrender.com/api/paintings/artist/16)
-* [Get paintings by genre (78)](https://art-api-yz85.onrender.com/api/paintings/genre/78)
-* [Get paintings by era (2)](https://art-api-yz85.onrender.com/api/paintings/era/2)
+- [GET /api/paintings/single/63](https://art-api-yz85.onrender.com/api/paintings/single/63) — Single painting (63)
+- [GET /api/paintings/sort/title/limit/10](https://art-api-yz85.onrender.com/api/paintings/sort/title/limit/10) — Sort by title, limit 10
+- [GET /api/paintings/sort/year/limit/10](https://art-api-yz85.onrender.com/api/paintings/sort/year/limit/10) — Sort by year, limit 10
+- [GET /api/paintings/sort/absd/limit/10](https://art-api-yz85.onrender.com/api/paintings/sort/absd/limit/10) — Error Test: Invalid sort parameter (`absd`)
+- [GET /api/paintings/sort/year/limit/asd](https://art-api-yz85.onrender.com/api/paintings/sort/year/limit/asd) — Error Test: Invalid limit parameter (`asd`)
+- [GET /api/paintings/sort/year/limit](https://art-api-yz85.onrender.com/api/paintings/sort/year/limit) — Error Test: Missing limit parameter
+- [GET /api/paintings/sort/year/limit/10/skip/30](https://art-api-yz85.onrender.com/api/paintings/sort/year/limit/10/skip/30) — Sort by year, limit 10, skip 30
+- [GET /api/paintings/sort/year/limit/10/skip/30000](https://art-api-yz85.onrender.com/api/paintings/sort/year/limit/10/skip/30000) — Error Test: Skip out of bounds
+- [GET /api/paintings/sort/year/limit/10/skip](https://art-api-yz85.onrender.com/api/paintings/sort/year/limit/10/skip) — Error Test: Missing skip value
+- [GET /api/paintings/search/port](https://art-api-yz85.onrender.com/api/paintings/search/port) — Search title substring (`port`)
+- [GET /api/paintings/search/pORt](https://art-api-yz85.onrender.com/api/paintings/search/pORt) — Search title case-insensitive (`pORt`)
+- [GET /api/paintings/search/connolly](https://art-api-yz85.onrender.com/api/paintings/search/connolly) — Error Test: Search not found
+- [GET /api/paintings/years/1800/1850](https://art-api-yz85.onrender.com/api/paintings/years/1800/1850) — Paintings between years 1800-1850
+- [GET /api/paintings/years/1850/1800](https://art-api-yz85.onrender.com/api/paintings/years/1850/1800) — Error Test: Start year after end year
+- [GET /api/paintings/galleries/5](https://art-api-yz85.onrender.com/api/paintings/galleries/5) — Paintings by gallery (5)
+- [GET /api/paintings/artist/16](https://art-api-yz85.onrender.com/api/paintings/artist/16) — Paintings by artist (16)
+- [GET /api/paintings/genre/78](https://art-api-yz85.onrender.com/api/paintings/genre/78) — Paintings by genre (78)
+- [GET /api/paintings/era/2](https://art-api-yz85.onrender.com/api/paintings/era/2) — Paintings by era (2)
 
 ### Counts & Aggregations
-* [Get genre counts (fewest to most)](https://art-api-yz85.onrender.com/api/counts/genres)
-* [Get artist painting counts (most to fewest)](https://art-api-yz85.onrender.com/api/counts/artists)
-* [Get top genres with > 20 paintings](https://art-api-yz85.onrender.com/api/counts/topgenres/20)
-* [Error Test: Threshold too high for top genres](https://art-api-yz85.onrender.com/api/counts/topgenres/2034958)
+- [GET /api/counts/genres](https://art-api-yz85.onrender.com/api/counts/genres) — Genre painting counts (fewest to most)
+- [GET /api/counts/artists](https://art-api-yz85.onrender.com/api/counts/artists) — Artist painting counts (most to fewest)
+- [GET /api/counts/topgenres/20](https://art-api-yz85.onrender.com/api/counts/topgenres/20) — Top genres with > 20 paintings
+- [GET /api/counts/topgenres/2034958](https://art-api-yz85.onrender.com/api/counts/topgenres/2034958) — Error Test: Threshold too high
 
