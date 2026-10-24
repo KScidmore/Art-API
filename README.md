@@ -59,7 +59,7 @@ Base URL: `https://art-api-yz85.onrender.com`
 - [GET /api/eras](https://art-api-yz85.onrender.com/api/eras)
 - [GET /api/galleries](https://art-api-yz85.onrender.com/api/galleries)
 - [GET /api/galleries/30](https://art-api-yz85.onrender.com/api/galleries/30) — Gallery by ID (30)
-- [GET /api/galleries/calgary](https://art-api-yz85.onrender.com/api/galleries/calgary) — Error Test: Non-existent gallery, invalid parameter
+- [GET /api/galleries/calgary](https://art-api-yz85.onrender.com/api/galleries/calgary) — Error Test: Invalid Gallery ID
 - [GET /api/galleries/country/fra](https://art-api-yz85.onrender.com/api/galleries/country/fra) — Galleries by country substring (`fra`)
 
 ### Artists
