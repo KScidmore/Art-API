@@ -17,38 +17,38 @@ This project is a database-driven REST API built using **Node.js** and **Express
 | `routes/galleries.js` | Handles requests for galleries, specific gallery references, and country substring filters. |
 | `routes/artists.js` | Handles requests for artists, artist references, last name searches, and nationality filters. |
 | `routes/genres.js` | Handles requests for genres with era details, specific genre references, and painting genres. |
-| `routes/paintings.js` | Handles complex sorting, filtering, limits, pagination skips, and relational painting queries. |
+| `routes/paintings.js` | Handles sorting, filtering, limits, pagination skips, and relational painting queries. |
 | `routes/counts.js` | Handles aggregated counts for genres, artists, and top genres by threshold. |
 
 ---
 
 ## API Endpoints Reference
 
-| HTTP Method | Endpoint Path | Description |
-| :--- | :--- | :--- |
-| `GET` | `/api/eras` | Returns all art history eras. |
-| `GET` | `/api/galleries` | Returns all galleries. |
-| `GET` | `/api/galleries/:id` | Returns a specific gallery by ID. |
-| `GET` | `/api/galleries/country/:substring` | Returns galleries whose country starts with the given substring. |
-| `GET` | `/api/artists` | Returns all artists. |
-| `GET` | `/api/artists/:artistId` | Returns a specific artist by ID. |
-| `GET` | `/api/artists/search/:substring` | Returns artists whose last name starts with the given substring. |
-| `GET` | `/api/artists/country/:substring` | Returns artists whose nationality starts with the given substring. |
-| `GET` | `/api/genres` | Returns all genres with nested era details. |
-| `GET` | `/api/genres/:genreId` | Returns a specific genre with era details by ID. |
-| `GET` | `/api/genres/painting/:paintingId` | Returns all genres associated with a specific painting, sorted by name. |
-| `GET` | `/api/paintings/single/:paintingId` | Returns a single painting by ID with related details. |
-| `GET` | `/api/paintings/sort/:searchParam/limit/:limit` | Returns paintings sorted by `title` or `year` with a record limit. |
-| `GET` | `/api/paintings/sort/:searchParam/limit/:limit/skip/:skip` | Returns sorted and limited paintings with pagination skip offset. |
-| `GET` | `/api/paintings/search/:substring` | Returns paintings matching a title substring. |
-| `GET` | `/api/paintings/years/:start/:end` | Returns paintings created between a start and end year range. |
-| `GET` | `/api/paintings/galleries/:galleryId` | Returns paintings belonging to a specific gallery. |
-| `GET` | `/api/paintings/artist/:artistId` | Returns paintings created by a specific artist. |
-| `GET` | `/api/paintings/genre/:genreId` | Returns paintings associated with a specific genre. |
-| `GET` | `/api/paintings/era/:eraId` | Returns paintings associated with a specific art era. |
-| `GET` | `/api/counts/genres` | Returns genre painting counts sorted from fewest to most. |
-| `GET` | `/api/counts/artists` | Returns artist painting counts sorted from most to fewest. |
-| `GET` | `/api/counts/topgenres/:threshold` | Returns genres with a painting count exceeding the specified threshold. |
+| Endpoint Path | Description |
+| :--- | :--- |
+| `/api/eras` | Returns all art history eras. |
+| `/api/galleries` | Returns all galleries. |
+| `/api/galleries/:id` | Returns a specific gallery by ID. |
+| `/api/galleries/country/:substring` | Returns galleries whose country starts with the given substring. |
+| `/api/artists` | Returns all artists. |
+| `/api/artists/:artistId` | Returns a specific artist by ID. |
+| `/api/artists/search/:substring` | Returns artists whose last name starts with the given substring. |
+| `/api/artists/country/:substring` | Returns artists whose nationality starts with the given substring. |
+| `/api/genres` | Returns all genres with nested era details. |
+| `/api/genres/:genreId` | Returns a specific genre with era details by ID. |
+| `/api/genres/painting/:paintingId` | Returns all genres associated with a specific painting, sorted by name. |
+| `/api/paintings/single/:paintingId` | Returns a single painting by ID with related details. |
+| `/api/paintings/sort/:searchParam/limit/:limit` | Returns paintings sorted by `title` or `year` with a record limit. |
+| `/api/paintings/sort/:searchParam/limit/:limit/skip/:skip` | Returns sorted and limited paintings with pagination skip offset. |
+| `/api/paintings/search/:substring` | Returns paintings matching a title substring. |
+| `/api/paintings/years/:start/:end` | Returns paintings created between a start and end year range. |
+| `/api/paintings/galleries/:galleryId` | Returns paintings belonging to a specific gallery. |
+| `/api/paintings/artist/:artistId` | Returns paintings created by a specific artist. |
+| `/api/paintings/genre/:genreId` | Returns paintings associated with a specific genre. |
+| `/api/paintings/era/:eraId` | Returns paintings associated with a specific art era. |
+| `/api/counts/genres` | Returns genre painting counts sorted from fewest to most. |
+| `/api/counts/artists` | Returns artist painting counts sorted from most to fewest. |
+| `/api/counts/topgenres/:threshold` | Returns genres with a painting count exceeding the specified threshold. |
 
 ---
 
@@ -59,7 +59,7 @@ Base URL: `https://art-api-yz85.onrender.com`
 - [GET /api/eras](https://art-api-yz85.onrender.com/api/eras)
 - [GET /api/galleries](https://art-api-yz85.onrender.com/api/galleries)
 - [GET /api/galleries/30](https://art-api-yz85.onrender.com/api/galleries/30) — Gallery by ID (30)
-- [GET /api/galleries/calgary](https://art-api-yz85.onrender.com/api/galleries/calgary) — Error Test: Non-existent gallery
+- [GET /api/galleries/calgary](https://art-api-yz85.onrender.com/api/galleries/calgary) — Error Test: Non-existent gallery, invalid parameter
 - [GET /api/galleries/country/fra](https://art-api-yz85.onrender.com/api/galleries/country/fra) — Galleries by country substring (`fra`)
 
 ### Artists
