@@ -13,7 +13,7 @@ const supabase = supa.createClient(process.env.SUPABASE_URL, process.env.SUPABAS
 
 // Mount route files
 require('./routes/artists')(app, supabase);
-//require('./routes/counts')(app, supabase);
+require('./routes/counts')(app, supabase);
 require('./routes/eras')(app, supabase);
 require('./routes/galleries')(app, supabase);
 require('./routes/genres')(app, supabase);
