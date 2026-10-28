@@ -53,15 +53,15 @@ const handlePaintings = (app, supabase) =>{
 
     // Fallback for missing limit value
     app.get('/api/paintings/sort/:sort/limit', (req, res) => {
-        
-        return res.status(400).json({ error: "Missing limit parameter." });
+
+        return res.status(400).json({ error: "Missing limit parameter" });
     });
 
 
     // Fallback for missing skip value
     app.get('/api/paintings/sort/:sort/limit/:limit/skip', (req, res) => {
 
-        return res.status(400).json({ error: "Missing skip parameter value." });
+        return res.status(400).json({ error: "Missing skip parameter value" });
 
     });
 
@@ -305,7 +305,7 @@ const handlePaintings = (app, supabase) =>{
         const { data, error } = await supabase
             .from('paintings')
             .select('*, artists(*), galleries(*)')
-            .eq('artistId', artistId)
+            .eq('artistID', artistId)
             .order('yearOfWork', { ascending: true });
 
         if (error) {
