@@ -51,6 +51,20 @@ const handlePaintings = (app, supabase) =>{
         res.send(data);
     });
 
+    // Fallback for missing limit value
+    app.get('/api/paintings/sort/:sort/limit', (req, res) => {
+        
+        return res.status(400).json({ error: "Missing limit parameter." });
+    });
+
+
+    // Fallback for missing skip value
+    app.get('/api/paintings/sort/:sort/limit/:limit/skip', (req, res) => {
+
+        return res.status(400).json({ error: "Missing skip parameter value." });
+
+    });
+
     /*
      GET /api/paintings/sort/:searchParam/limit/:limit
      Returns paintings sorted by title or yearOfWork, with limit.

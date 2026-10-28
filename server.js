@@ -1,9 +1,8 @@
 /**
- * File Name: server.js
- * Description: Main entry point for the Art Database API. 
- * Initializes Express, configures the Supabase client,
- * mounts all API routes, and starts the server listener.
- */
+ File Name: server.js
+ Description: Main entry point for the Art Database API. 
+ Initializes Express, configures the Supabase client, mounts all API routes, and starts the server listener.
+ */ 
 const express = require('express');
 const app = express();
 

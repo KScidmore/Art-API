@@ -55,17 +55,19 @@ This project is a database-driven REST API built using **Node.js** and **Express
 ## Live Test Links
 Base URL: `https://art-api-yz85.onrender.com`
 
-### Eras & Galleries
-- [GET /api/eras](https://art-api-yz85.onrender.com/api/eras)
-- [GET /api/galleries](https://art-api-yz85.onrender.com/api/galleries)
+### Eras Galleries
+- [GET /api/eras](https://art-api-yz85.onrender.com/api/eras) - All Eras
+
+### Galleries
+- [GET /api/galleries](https://art-api-yz85.onrender.com/api/galleries) - All Galleries
 - [GET /api/galleries/30](https://art-api-yz85.onrender.com/api/galleries/30) — Gallery by ID (30)
 - [GET /api/galleries/calgary](https://art-api-yz85.onrender.com/api/galleries/calgary) — Error Test: Invalid Gallery ID
 - [GET /api/galleries/country/fra](https://art-api-yz85.onrender.com/api/galleries/country/fra) — Galleries by country substring (`fra`)
 
 ### Artists
-- [GET /api/artists](https://art-api-yz85.onrender.com/api/artists)
+- [GET /api/artists](https://art-api-yz85.onrender.com/api/artists) - All Artists
 - [GET /api/artists/12](https://art-api-yz85.onrender.com/api/artists/12) — Artist by ID (12)
-- [GET /api/artists/1223423](https://art-api-yz85.onrender.com/api/artists/1223423) — Error Test: Non-existent artist ID
+- [GET /api/artists/1223423](https://art-api-yz85.onrender.com/api/artists/1223423) — Error Test: Invalid artist ID
 - [GET /api/artists/search/ma](https://art-api-yz85.onrender.com/api/artists/search/ma) — Search last name (`ma`)
 - [GET /api/artists/search/mA](https://art-api-yz85.onrender.com/api/artists/search/mA) — Search last name case-insensitive (`mA`)
 - [GET /api/artists/country/fra](https://art-api-yz85.onrender.com/api/artists/country/fra) — Artists by country (`fra`)
