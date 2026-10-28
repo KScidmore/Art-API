@@ -23,7 +23,7 @@ const handleEras = (app, supabase) => {
 
         if (!data || data.length === 0) {
 
-                return res.status(404).json({ error: "No eras found." });
+                return res.status(404).json({ error: "No eras found" });
 
         }
 

@@ -23,7 +23,7 @@ const handleGalleries = (app, supabase) =>{
 
         if (!data || data.length === 0) {
 
-            return res.status(404).json({ error: "No galleries found." });
+            return res.status(404).json({ error: "No galleries found" });
 
         }
 
@@ -33,11 +33,17 @@ const handleGalleries = (app, supabase) =>{
 
     /*
      GET /api/galleries/:galleryId
-     Returns just the specified gallery using the galleryId field.
+     Returns just the specified gallery using the galleryId.
     */
     app.get('/api/galleries/:galleryId', async (req, res) => {
 
-        const galleryId = req.params.galleryId;
+        const galleryId = parseInt(req.params.galleryId);
+        
+        if (isNaN(galleryId)) {
+
+            return res.status(400).json({ error: "Invalid gallery ID" });
+
+        }
 
         const {data, error} = await supabase
             .from('galleries')
@@ -52,7 +58,7 @@ const handleGalleries = (app, supabase) =>{
 
         if (!data || data.length === 0) {
 
-            return res.status(404).json({ error: `Gallery with ID:${galleryId} not found` });
+            return res.status(404).json({ error: `Gallery with ID: ${galleryId} not found` });
 
         }
 
@@ -61,7 +67,7 @@ const handleGalleries = (app, supabase) =>{
 
     /*
      GET /api/galleries/country/:substring
-     Returns the galleries whose galleryCountry (case insensitive) begins with the provided substring, e.g., /api/galleries/country/fra.
+     Returns the galleries whose galleryCountry begins with the provided substring, e.g., /api/galleries/country/fra.
     */
     app.get('/api/galleries/country/:substring', async (req, res) => {
 

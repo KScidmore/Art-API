@@ -33,7 +33,13 @@ const handleGenres = (app, supabase) =>{
     */
     app.get('/api/genres/:genreId', async (req, res) => {
 
-        const genreId = req.params.genreId;
+        const genreId = parseInt(req.params.genreId);
+
+        if (isNaN(genreId)) {
+
+            return res.status(400).json({ error: "Invalid genre ID" });
+
+        }
 
         const {data, error} = await supabase
             .from('genres')
@@ -60,25 +66,27 @@ const handleGenres = (app, supabase) =>{
      Returns the genres used in a given painting, ordered by genreName in ascending order.
     */
     app.get('/api/genres/painting/:paintingId', async (req, res) => {
+        
+        const paintingId = parseInt(req.params.paintingId);
 
-        const paintingId = req.params.paintingId;
+        if (isNaN(paintingId)) {
 
-        const {data, error} = await supabase
-            .from('paintinggenres')
-            .select('genres(*, eras(*))')
-            .eq('paintingId', paintingId)
-            .order('genreName', {referencedTable: 'genres', ascending: true});
+            return res.status(400).json({ error: "Invalid painting ID" });
 
+        }
+
+        const { data, error } = await supabase
+            .rpc('get_genres_by_painting', { painting_id: paintingId });
 
         if (error) {
 
             return res.status(400).json({ error: error.message });
 
-        }  
+        } 
 
         if (!data || data.length === 0) {
 
-            return res.status(404).json({ error: `Painting with ID:${paintingId} not found` });
+            return res.status(404).json({ error: `No genres found for painting with ID: ${paintingId}` });
 
         }
 

@@ -31,7 +31,13 @@ const handleArtists = (app, supabase) =>{
     */
     app.get('/api/artists/:artistId', async (req, res) => {
 
-        const artistId = req.params.artistId;
+        const artistId = parseInt(req.params.artistId);
+
+        if (isNaN(artistId)) {
+
+            return res.status(400).json({ error: "Invalid artist ID" });
+
+        }
 
         const {data, error} = await supabase
             .from('artists')
