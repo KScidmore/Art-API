@@ -270,7 +270,7 @@ const handlePaintings = (app, supabase) =>{
         const { data, error } = await supabase
             .from('paintings')
             .select('*, artists(*), galleries(*)')
-            .eq('galleryId', galleryId)
+            .eq('galleryID', galleryId)
             .order('yearOfWork', { ascending: true });
 
         if (error) {
@@ -370,7 +370,7 @@ const handlePaintings = (app, supabase) =>{
         }
 
         const { data, error } = await supabase
-            .rpc('get_paintings_by_era', { pera_id: eraId });
+            .rpc('get_paintings_by_era', { era_id: eraId });
 
         if (error) {
 
