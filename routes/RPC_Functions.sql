@@ -1,7 +1,7 @@
 -- Below are the RPC queries used for genres.js
 
 --Genres used in a painting
-select g."genreID", g."genreName", g."description", g."wikiLink", e."eraId", e."eraName", e."eraYears"
+select g."genreID", g."genreName", g."description", g."wikiLink", row_to_json(e) as eras
 from genres g
 join paintinggenres pg on g."genreID" = pg."genreId"
 join eras e on g."eraID" = e."eraId"
@@ -11,16 +11,22 @@ order by g."genreName" asc;
 -- Below are the RPC queries used for paintings.js
 
 -- Paintings by genre sorted by year
-select p."paintingId", p.title, p."yearOfWork"
+select p."paintingId", p.title, p."yearOfWork", row_to_json(a) as artists, row_to_json(gal) as galleries
 from paintings p
 join paintinggenres pg on p."paintingId" = pg."paintingId"
+join artists a on p."artistId" = a."artistId"
+join galleries gal on p."galleryId" = gal."galleryId"
 where pg."genreId" = genre_id
 order by p."yearOfWork" asc;
 
 -- Painting by era sorted by year
-select "paintingId", title, "yearOfWork"
-from paintings
-where "eraId" = era_id
+select p."paintingId", p.title, p."yearOfWork", row_to_json(a) as artists, row_to_json(gal) as galleries
+FROM paintings p
+join paintinggenres pg on p."paintingId" = pg."paintingId"
+join genres g on pg."genreId" = g."genreId"
+join artists a on p."artistId" = a."artistId"
+join galleries gal on p."galleryId" = gal."galleryId"
+where g."eraId" = era_id
 order by "yearOfWork" asc;
 
 
