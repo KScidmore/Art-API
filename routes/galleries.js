@@ -7,7 +7,7 @@ const handleGalleries = (app, supabase) =>{
 
     /*
      GET /api/galleries
-     Returns all the galleries.
+     Returns all galleries.
     */
     app.get('/api/galleries', async (req, res) => {
 
@@ -67,7 +67,7 @@ const handleGalleries = (app, supabase) =>{
 
     /*
      GET /api/galleries/country/:substring
-     Returns the galleries whose galleryCountry begins with the provided substring, e.g., /api/galleries/country/fra.
+     Returns the galleries whose galleryCountry begins with the provided substring, e.g. /api/galleries/country/fra
     */
     app.get('/api/galleries/country/:substring', async (req, res) => {
 

@@ -15,7 +15,9 @@ const handleCounts = (app, supabase) => {
             .rpc('get_genre_counts');
 
         if (error) {
+
             return res.status(400).json({ error: error.message });
+            
         }
 
         res.send(data);
@@ -31,7 +33,9 @@ const handleCounts = (app, supabase) => {
             .rpc('get_artist_counts');
 
         if (error) {
+            
             return res.status(400).json({ error: error.message });
+
         }
 
 
@@ -49,7 +53,7 @@ const handleCounts = (app, supabase) => {
 
         if (isNaN(threshold)) {
 
-            return res.status(400).json({ error: "Threshold must be a number." });
+            return res.status(400).json({ error: "Threshold must be a number" });
 
         }
 

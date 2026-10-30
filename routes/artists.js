@@ -1,6 +1,6 @@
 /*
 File: artists.js
-Description: API routes for retrieving all artists, a specific artist by ID reference, 
+Description: API routes for retrieving all artists, a specific artist by ID, 
 artists searched by last name substring, and artists filtered by nationality substring.
 */
 

@@ -22,9 +22,9 @@ This project is a database-driven REST API built using **Node.js** and **Express
 
 ---
 
-## API Endpoints Reference
+## API Endpoints
 
-| Endpoint Path | Description |
+| Endpoint | Description |
 | :--- | :--- |
 | `/api/eras` | Returns all art history eras. |
 | `/api/galleries` | Returns all galleries. |

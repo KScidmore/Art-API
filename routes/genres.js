@@ -1,7 +1,7 @@
 /*
 File: genres.js
 Description: API routes for retrieving all genres with era details, 
-specific genres by ID reference, and genres used in a specific painting sorted by name.
+specific genres by ID, and genres used in a specific painting.
 */
 
 const handleGenres = (app, supabase) =>{

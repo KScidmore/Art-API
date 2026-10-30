@@ -17,8 +17,11 @@ const handlePaintings = (app, supabase) =>{
             .select();
         
         if (error) {
+
             return res.status(400).json({ error: error.message });
+
         }
+
         res.send(data);
     });
 
@@ -42,10 +45,15 @@ const handlePaintings = (app, supabase) =>{
             .eq('paintingId', paintingId);
 
         if (error) {
+
             return res.status(400).json({ error: error.message });
+
         }
+
         if (!data || data.length === 0) {
+
             return res.status(404).json({ error: `Painting with ID: ${paintingId} not found` });
+            
         }
 
         res.send(data);
@@ -61,7 +69,7 @@ const handlePaintings = (app, supabase) =>{
     // Fallback for missing skip value
     app.get('/api/paintings/sort/:sort/limit/:limit/skip', (req, res) => {
 
-        return res.status(400).json({ error: "Missing skip parameter value" });
+        return res.status(400).json({ error: "Missing skip parameter" });
 
     });
 
