@@ -77,7 +77,7 @@ const handleGenres = (app, supabase) =>{
 
         const { data, error } = await supabase
             .from('genres')
-            .select(`*, paintinggenres!inner (paintingId), eras (*)`)
+            .select(`*, eras (*)`)
             .eq('paintinggenres.paintingId', paintingId)
             .order('genreName', { ascending: true });
 
