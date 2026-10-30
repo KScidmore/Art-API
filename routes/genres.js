@@ -76,22 +76,25 @@ const handleGenres = (app, supabase) =>{
         }
 
         const { data, error } = await supabase
-            .rpc('get_genres_by_painting', { painting_id: paintingId });
+            .from('genres')
+            .select(`*, paintinggenres!inner (paintingId), eras (*)`)
+            .eq('paintinggenres.paintingId', paintingId)
+            .order('genreName', { ascending: true });
 
-        if (error) {
+        if (error){
 
-            return res.status(400).json({ error: error.message });
-
-        } 
-
-        if (!data || data.length === 0) {
-
-            return res.status(404).json({ error: `No genres found for painting with ID: ${paintingId}` });
+            return res.status(500).json({ error: error.message });
 
         }
 
-        res.send(data);
+        if (!data || data.length === 0) {
 
+            return res.status(404).json({ error: `No genre found for painting ID: ${paintingId}` });
+
+        }
+
+
+        res.send(data);
     });
     
 }
