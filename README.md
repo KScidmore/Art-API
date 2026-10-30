@@ -55,7 +55,7 @@ This project is a database-driven REST API built using **Node.js** and **Express
 ## Live Test Links
 Base URL: `https://art-api-yz85.onrender.com`
 
-### Eras Galleries
+### Eras
 - [GET /api/eras](https://art-api-yz85.onrender.com/api/eras) - All Eras
 
 ### Galleries
