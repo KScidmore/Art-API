@@ -95,7 +95,7 @@ Base URL: `https://art-api-yz85.onrender.com`
 - [GET /api/paintings/years/1850/1800](https://art-api-yz85.onrender.com/api/paintings/years/1850/1800) — Error Test: Start year after end year
 - [GET /api/paintings/galleries/5](https://art-api-yz85.onrender.com/api/paintings/galleries/5) — Paintings by gallery (5)
 - [GET /api/paintings/artist/16](https://art-api-yz85.onrender.com/api/paintings/artist/16) — Paintings by artist (16)
-- [GET /api/paintings/artist/16](https://art-api-yz85.onrender.com/api/paintings/artist/666) — Error Test: Invalid artist ID
+- [GET /api/paintings/artist/666](https://art-api-yz85.onrender.com/api/paintings/artist/666) — Error Test: Invalid artist ID
 - [GET /api/paintings/genre/78](https://art-api-yz85.onrender.com/api/paintings/genre/78) — Paintings by genre (78)
 - [GET /api/paintings/era/2](https://art-api-yz85.onrender.com/api/paintings/era/2) — Paintings by era (2)
 
