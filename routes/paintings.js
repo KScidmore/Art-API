@@ -338,20 +338,17 @@ const handlePaintings = (app, supabase) =>{
         }
 
         const { data, error } = await supabase
-            .from('paintings')
-            .select(`paintingId, title, yearOfWork, artists (*), galleries (*)`)
-            .eq('paintinggenres.genreId', genreId)
-            .order('yearOfWork', { ascending: true });
+            .rpc('get_paintings_by_genre', { genre_id: genreId });
 
-        if (error){
-            
-            return res.status(500).json({ error: error.message });
+        if (error) {
+
+            return res.status(400).json({ error: error.message });
 
         }
 
         if (!data || data.length === 0) {
 
-            return res.status(404).json({ error: `No paintings found for era ID: ${genreId}` });
+            return res.status(404).json({ error: `No paintings found for genre ID: ${genreId}` });
 
         }
 
@@ -360,7 +357,7 @@ const handlePaintings = (app, supabase) =>{
 
     /*
      GET /api/paintings/era/:eraId
-     Returns paintingId, title, yearOfWork from paintings table and all artist and gallery fields for a given era, sorted by year.
+     Returns paintingId, title, yearOfWork for a given era, sorted by year.
     */
     app.get('/api/paintings/era/:eraId', async (req, res) => {
         
@@ -373,20 +370,17 @@ const handlePaintings = (app, supabase) =>{
         }
 
         const { data, error } = await supabase
-            .from('paintings')
-            .select(`paintingId, title, yearOfWork, artists (*), galleries (*)`)
-            .eq('paintinggenres.genres.eraId', eraId)
-            .order('yearOfWork', { ascending: true });
+            .rpc('get_paintings_by_era', { era_id: eraId });
 
-        if (error){
+        if (error) {
 
-            return res.status(500).json({ error: error.message });
-
+            return res.status(400).json({ error: error.message });
+            
         }
 
         if (!data || data.length === 0) {
 
-            return res.status(404).json({ error: `No paintings found for era ID: ${eraId}` });
+            return res.status(404).json({ error: `No paintings found with era ID: ${eraId}` });
 
         }
 
