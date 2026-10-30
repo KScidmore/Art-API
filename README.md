@@ -98,7 +98,7 @@ Base URL: `https://art-api-yz85.onrender.com`
 - [GET /api/paintings/genre/78](https://art-api-yz85.onrender.com/api/paintings/genre/78) — Paintings by genre (78)
 - [GET /api/paintings/era/2](https://art-api-yz85.onrender.com/api/paintings/era/2) — Paintings by era (2)
 
-### Counts & Aggregations
+### Counts
 - [GET /api/counts/genres](https://art-api-yz85.onrender.com/api/counts/genres) — Genre painting counts (fewest to most)
 - [GET /api/counts/artists](https://art-api-yz85.onrender.com/api/counts/artists) — Artist painting counts (most to fewest)
 - [GET /api/counts/topgenres/20](https://art-api-yz85.onrender.com/api/counts/topgenres/20) — Top genres with > 20 paintings
