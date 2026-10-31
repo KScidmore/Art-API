@@ -1,7 +1,7 @@
 # Art Database API
 
 ## Overview
-This project is a database-driven REST API built using **Node.js** and **Express**, integrated with **Supabase** for data retrieval. The API provides endpoints for querying paintings, artists, galleries, genres, eras, and aggregated counts, returning all data in JSON format.
+This project is a database-driven REST API built using **Node.js** and **Express**, integrated with **Supabase** for data retrieval. The API provides endpoints for querying paintings, artists, galleries, genres, eras, and counts, returning all data in JSON format.
 
 ## Built With
 - **Node.js** - JavaScript runtime environment
