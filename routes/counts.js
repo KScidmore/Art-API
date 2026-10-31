@@ -57,7 +57,8 @@ const handleCounts = (app, supabase) => {
 
         }
 
-        const { data, error } = await supabase.rpc('get_top_genres', { threshold: threshold });
+        const { data, error } = await supabase
+            .rpc('get_top_genres', { threshold: threshold });
 
         if (error) {
 
