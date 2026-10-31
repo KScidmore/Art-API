@@ -67,7 +67,7 @@ const handleGalleries = (app, supabase) =>{
 
     /*
      GET /api/galleries/country/:substring
-     Returns the galleries whose galleryCountry begins with the provided substring, e.g. /api/galleries/country/fra
+     Returns the galleries whose galleryCountry begins with the provided substring
     */
     app.get('/api/galleries/country/:substring', async (req, res) => {
 

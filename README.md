@@ -17,8 +17,8 @@ This project is a database-driven REST API built using **Node.js** and **Express
 | `routes/galleries.js` | Handles requests for galleries, specific gallery references, and country substring filters. |
 | `routes/artists.js` | Handles requests for artists, artist references, last name searches, and nationality filters. |
 | `routes/genres.js` | Handles requests for genres with era details, specific genre references, and painting genres. |
-| `routes/paintings.js` | Handles sorting, filtering, limits, pagination skips, and relational painting queries. |
-| `routes/counts.js` | Handles aggregated counts for genres, artists, and top genres by threshold. |
+| `routes/paintings.js` | Handles sorting, filtering, limits, skips, and relational painting queries. |
+| `routes/counts.js` | Handles counts for genres, artists, and top genres by threshold. |
 
 ---
 

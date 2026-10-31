@@ -21,6 +21,12 @@ const handleArtists = (app, supabase) =>{
             return res.status(400).json({ error: error.message });
 
         }
+        
+        if (!data || data.length === 0) {
+
+                return res.status(404).json({ error: "No artists found" });
+
+        }
 
         res.send(data);
     });
@@ -105,6 +111,7 @@ const handleArtists = (app, supabase) =>{
             return res.status(400).json({ error: error.message });
 
         }
+        
         if (!data || data.length === 0) {
 
             return res.status(404).json({ error: `No artist found from a country that starts with: ${substring}` });

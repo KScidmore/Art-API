@@ -1,29 +1,10 @@
 /*
 File: paintings.js
-Description: API routes for retrieving paintings, sorted subsets, paginated windows, 
-searches, year ranges, and relations by gallery, artist, genre, and era.
+Description: API routes for retrieving paintings, sorted subsets, searches, 
+year ranges, and relations by gallery, artist, genre, and era.
 */
 
 const handlePaintings = (app, supabase) =>{
-    
-    /*
-     GET /api/paintings
-     Returns all paintings.
-    */
-    app.get('/api/paintings', async (req, res) => {
-
-        const {data, error} = await supabase
-            .from('paintings')
-            .select();
-        
-        if (error) {
-
-            return res.status(400).json({ error: error.message });
-
-        }
-
-        res.send(data);
-    });
 
     /*
      GET /api/paintings/single/:paintingId

@@ -7,7 +7,7 @@ const handleEras = (app, supabase) => {
 
     /*
      GET /api/eras
-     Returns all the eras from the database.
+     Returns all the eras.
     */
     app.get('/api/eras', async (req, res) => {
 
